@@ -1,0 +1,127 @@
+\listfiles
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\def\N{\mathbb{N}}
+\def\R{\mathbb{R}}
+\def\Z{\mathbb{Z}}
+
+\usepackage[a4paper,margin=1in]{geometry}
+
+\setlength{\parindent}{0cm}
+\setlength{\parskip}{1em}
+
+\title{Algebra}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{1. Sets and Categories}
+
+\subsection*{1.1}
+
+Suppose that for any property, we can define a set whose members are items that satisfy that property. Then let $r = \{x : x \not\in x\}$. Then $r \in r \iff r \not\in r$.
+
+In naive set theory and ZFC, this is avoided as the axiom schema of specification (for any property $P$ and set $S$ the set $\{s \in S : s\ \text{satisfies}\ P\}$ exists) requires an existing set $S$. Also, a set of all sets cannot exist, as otherwise we can take $S$ to be such a set.
+
+\subsection*{1.2}
+
+Nonempty: any equivalence class $[a]$ contains $a$.
+
+Disjoint: we wish to show that $[a] \ne [b] \implies [a] \cap [b] = \{\}$. Equivalently, $[a] \cap [b] \ne \{\} \implies [a] = [b]$. Suppose $c \in [a] \cap [b]$, and let $a' \in [a]$. Then $a' \sim a \sim c \sim b$, hence $[a] \subseteq [b]$. Similarly $[b] \subseteq [a]$.
+
+Union is $S$: $S$ contains the union as it contains every equivalence class by construction. Let $s \in S$. Then $s \in [s]$, hence the union contains $S$.
+
+\subsection*{1.3}
+
+Define $a \sim b$ when there exists $p \in P$ such that $a \in p, b \in p$.
+
+\subsection*{1.4}
+
+We count partitions. A partition will have 1, 2 or 3 parts. If it has 1 part it must be the whole set and if it has 3 parts it must be $\{[1], [2], [3]\}$. If it has 2 parts, exactly one part will have 2 items and the other 1 item, and we have 3 choices for the singleton part. Hence there are 5 equivalence relations.
+
+\subsection*{1.5}
+
+For $a, b \in \R$ define $a \sim b$ when $|a - b| < 2$. Then $0 \sim 1$ and $1 \sim 2$ but $0 \not\sim 2$.
+
+\subsection*{1.6}
+
+Reflexive: for $r \in \R$ we have $r \sim r$ since $r - r = 0 \in \Z$.
+
+Symmetric: suppose $a \sim b$. Then $a - b \in \Z$. Then $b - a = -(b - a) \in \Z$, hence $b \sim a$.
+
+Transitive: suppose $a \sim b, b \sim c$. Then $a - c = (a - b) + (b - c) \in \Z$.
+
+Every class in $\R / \sim$ is represented by a unique real number $r \in [0, 1)$, which is equivalent to all real numbers with that fractional part.
+
+Every class in $\R^2 / \approx$ is represented by a unique pair of real numbers $(r_1, r_2)$ with each $r_i \in [0, 1)$, which is equivalent to all pairs of real numbers whose fractional parts are the representative.
+
+\section*{1. Functions between sets}
+
+\subsection*{2.1}
+
+$n!$
+
+\subsection*{2.2}
+
+Let $f: A \to B$. We wish to show that $f$ has a right-inverse iff it is surjective.
+
+$\implies$: let $b \in B$. Suppose the right inverse is $g$; then $f \circ g = id_B$ hence $b = f(g(b)) \in f(A)$.
+
+$\impliedby$: we define $g: B \to A$ as follows. Let $b \in B$. Choose $a \in f^{-1}(b)$, which is nonempty since $f$ is surjective, then set $g(b) = a$. Then $g$ is a right inverse. Proof: for all $b \in B$ we have $f(g(b)) = f(a) = b$.
+
+\subsection*{2.3}
+
+Let $f: A \to B$ be a bijection and $f^{-1}$ its inverse. Since $f^{-1}$ is a right inverse of $f$, we have $f \circ f^{-1} = id_B$ hence $f$ is a left inverse of $f^{-1}$. Similarly it is a right inverse as well; hence $f^{-1}$ is a bijection.
+
+Let $g: A \to B, f: B \to C$ be bijections. Then $(f \circ g) \circ (g^{-1} \circ f^{-1}) = id_C$, hence $f \circ g$ is surjective. Similarly, it is injective.
+
+\subsection*{2.4}
+
+Reflexive: for any set $A, |A| = |A|$ since $id_A$ is a bijection.
+
+Symmetric: suppose $|A| = |B|$, that is, there is a bijection $f: A \to B$. Then $f^{-1}: B \to A$ is a bijection, hence $|B| = |A|$.
+
+Transitive: suppose $|A| = |B|, |B| = |C|$ with bijections $f$ and $g$. Then $f \circ g$ is a bijection between $A$ and $C$.
+
+\subsection*{2.5}
+
+A function $f: A \to B$ is an epimorphism (is epic) if for all sets $Z$ and all functions $\alpha', \alpha'': B \to Z$ we have $\alpha' \circ f = \alpha'' \circ f \implies \alpha' = \alpha$. A function is surjective iff it is epic.
+
+$\implies$: Let $f: A \to B$ be surjective and $\alpha', \alpha'': B \to Z$ such that $\alpha' \circ f = \alpha'' \circ f$. Then $f$ has a right inverse $g$ and $\alpha' \circ f \circ g = \alpha'' \circ f \circ g$. Hence $\alpha' = \alpha''$.
+
+$\impliedby$: Let $f: A \to B$ be epic and let $b \in B$. We wish to show that $b \in f(A)$. Let $Z = \{0, 1\}$ and suppose $\alpha'$ and $\alpha''$ disagree only on $b$, that is, $\alpha'(c) = \alpha''(c) \iff c \ne b$. Then $\alpha' \ne \alpha''$. Suppose $b \not\in f(A)$. Then for all $a \in A \alpha' \circ f(a) = \alpha'' \circ f(a)$ (proof: $f(a) \ne b$, hence $\alpha'(f(a)) = \alpha''(f(a))$), which contradicts $f$ is an epimorphism.
+
+\subsection*{2.6}
+
+For any $f: A \to B$ define $\phi_f: A \to A \times B$ by $\phi_f(a) = (a, f(a))$. Then $\phi_f$ is a section (right inverse) of $\pi_A$. Proof: for all $a \in A$ we have $\pi_A \circ \phi_f (a) = \pi_A (a, f(a)) = a$. In fact every section of $\pi_A$ corresponds to a unique function, since the $\pi_B(\pi_A^{-1}(x)) = B$.
+
+\subsection*{2.7}
+
+For all $f: A \to B$ let $\phi_f: A \to \Gamma_f$ be given by $\phi(a) = (a, f(a))$. Then $\pi_A$ is a left inverse of $\phi_f$ by exercise 2.6, hence $\phi_f$ is injective. Also $\phi_f$ is surjective. Proof: suppose $y = (a, b) \in \Gamma_f$. Then $b = f(a)$, hence $y = \phi_f(a)$.
+
+\subsection*{2.8}
+
+TBD
+
+\subsection*{2.9}
+
+TBD
+
+\subsection*{2.10}
+
+Any function from $A$ to $B$ is defined by the value of $f(a)$ for all $a \in A$; the choice for each $a$ is independent, there are $|A|$ choices and for each choice we may choose $|B|$ ways, so there are $|A| \times |A| \times \ldots |A|$ different functions.
+
+For an explicit bijection, we can use the fact that any finite set can be well-ordered to order the elements of $|B^A|$ lexicographically on their valuations $(f(a_1), f(a_2) \ldots )$.
+
+\subsection*{2.11}
+
+A subset $S \subseteq A$ is determined uniquely by its indicator function $f_S \in 2^A$ given by $f_S(a) = 0 \iff a \in S$.
+
+
+\end{document}

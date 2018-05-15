@@ -5,6 +5,7 @@
 \usepackage{amssymb}
 \usepackage{mathtools}
 \usepackage{titlesec}
+\usepackage{tikz-cd}
 \usepackage[small,nohug,heads=littlevee]{diagrams}
 \diagramstyle[labelstyle=\scriptstyle]
 
@@ -87,9 +88,9 @@ $\impliedby$: we define $g: B \to A$ as follows. Let $b \in B$. Choose $a \in f^
 
 \subsubsection*{2.3}
 
-Let $f: A \to B$ be a bijection and $f^{-1}$ its inverse. Since $f^{-1}$ is a right inverse of $f$, we have $f \circ f^{-1} = id_B$ hence $f$ is a left inverse of $f^{-1}$. Similarly it is a right inverse as well; hence $f^{-1}$ is a bijection.
+Let $f: A \to B$ be a bijection and $f^{-1}$ its inverse. Since $f^{-1}$ is a right inverse of $f$, we have $f \circ f^{-1} = id_B$ hence $f$ is a left inverse of $f^{-1}$. By a similar argument, it is a right inverse as well; hence $f^{-1}$ is a bijection.
 
-Let $g: A \to B, f: B \to C$ be bijections. Then $(f \circ g) \circ (g^{-1} \circ f^{-1}) = id_C$, hence $f \circ g$ is surjective. Similarly, it is injective.
+Let $g: A \to B, f: B \to C$ be bijections. Then $(f \circ g) \circ (g^{-1} \circ f^{-1}) = id_C$, hence $f \circ g$ is surjective. By a similar argument, it is injective.
 
 \subsubsection*{2.4}
 
@@ -179,13 +180,13 @@ An object $n$ of this category can be thought of as $\R^n$, and the morphisms $\
 
 \subsubsection*{3.7}
 
-Let us denote this category as $C^A$. Then the objects of $C^A$ are morphisms of $C$. Given two objects in $f, g \in Obj(C^A)$, suppose $f \in \Hom_C(A, Z_1)$ and $g \in \Hom_C(A, Z_2)$. Define a $C^A$-morphism from $f$ to $g$ to be a $C$-morphism $h$ such that the diagram commutes.
+Let us denote this category as $C^A$. Then the objects of $C^A$ are morphisms of $C$. Given two objects in $f, g \in Obj(C^A)$, suppose $f \in \Hom_C(A, Z_1)$ and $g \in \Hom_C(A, Z_2)$. Define a $C^A$-morphism from $f$ to $g$ to be a $C$-morphism $\sigma$ such that the diagram commutes.
 
-\begin{diagram}
-A &\rTo^{f} &Z_1\\
-\dTo_{g} &\ldTo_{h}\\
-Z_2
-\end{diagram}
+\begin{tikzcd}
+ & A \arrow[ldd, "f"'] \arrow[rdd, "g"] &  \\
+ &  &  \\
+Z_1 \arrow[rr, "\sigma"] &  & Z_2
+\end{tikzcd}
 
 1. An identity $C^A$-morphism on the $C^A$-object $f$ is a $C$-morphism $h$ such that
 
@@ -268,30 +269,57 @@ A function maps between two sets; we must generalize this concept to allow for m
 
 The object $\Omega = \{0, 1\}$ will do. A subobject (subset) $A'$ of an object (set) $A$ can be identified with a morphism (set-function) $f: A \to \Omega$ by setting $a \in A' \iff f(a) = 1$.
 
-\subsubsection*{3.11}
+\subsubsection*{3.11 - $C^{A,B}$}
 
-TBD
+A $C^{A,B}$-object is a pair of $C$-morphisms $(f, g)$. A $C^{A,B}$-morphism between $(f_1, g_1)$ and $(f_2, g_2)$ is a $C$-morphisms $\sigma$ such that $f_2 = \sigma f_1$ and $g_2 = \sigma g_1$. Composition is inherited from $C$.
+
+\begin{tikzcd}
+ &  & A \arrow[lldd, "f_1"'] \arrow[dd, "f_2" description] \arrow[rrdd, "f_3"] &  &  \\
+ &  &  &  &  \\
+Z_1 \arrow[rr, "\sigma"] &  & Z_2 \arrow[rr, "\tau"] &  & Z_3 \\
+ &  &  &  &  \\
+ &  & B \arrow[lluu, "g_1"] \arrow[uu, "g_2" description] \arrow[rruu, "g_3"'] &  &
+\end{tikzcd}
+
+\subsubsection*{3.11 - $C^{\alpha, \beta}$}
+
+Let $\alpha: C \to A$ and $\beta: C \to B$. A $C^{\alpha, \beta}$-object is a pair of $C$-morphisms $(f, g)$ with a common target $Z$ such that $f\alpha = g\beta$. A $C^{\alpha, \beta}$-morphism between objects $(f_1, g_1)$ with common target $Z_1$ and $(f_2, g_2)$ with common target $Z_2$ is a $C$-morphism $\sigma: Z_1 \to Z_2$ such that $f_2 = \sigma f_1$ and $g_2 = \sigma g_1$.
+
+\begin{tikzcd}
+ &  &  & A \arrow[ld, "f_1"] \arrow[lld, "f_2", bend right] \arrow[llld, "f_3"', bend right] &  \\
+Z_3 & Z_2 \arrow[l, "\tau"] & Z_1 \arrow[l, "\sigma"] &  & C \arrow[lu, "\alpha"'] \arrow[ld, "\beta"] \\
+ &  &  & B \arrow[lu, "g_1"'] \arrow[llu, "g_2"', bend left] \arrow[lllu, "g_3", bend left] &
+\end{tikzcd}
 
 \subsection*{4. Morphisms}
 
 \subsubsection*{4.1}
 
-No.
+Proof ommitted.
 
 \subsubsection*{4.2}
 
+The are relations which are also symmetric. Proof: let $C$ be a category of this kind and let $A \sim B$, that is, $f \in \Hom_C(A, B)$. By the groupoid property there exists a left inverse $g \in \Hom_C(B, A)$, hence $\Hom_C(B, A)$ is nonempty, hence $B \sim A$.
+
 \subsubsection*{4.3}
 
-\subsubsection*{4.4}
+Let $\beta' \circ f  = \beta'' \circ f$. Let $g$ be a left inverse of $f$. Then $\beta' \circ f \circ g = \beta'' \circ f \circ g$, hence $\beta' = \beta''$.
 
 TBD
 
-The nonmono version cannot work since the identity is a monomphism (hence not a nonmomorphism).
+\subsubsection*{4.4}
+
+As long as $Obj(C)$ is nonempty, the structure $C_{nonmono}$ constructed as such cannot work since the identity function is a monomorphism, hence not a homomorphism in $C_{nonmono}$.
 
 \subsubsection*{4.5}
 
 TBD
 
+\subsection*{5. Universal Properties}
+
+\subsubsection*{5.5}
+
+We define the category $C$ explicitly. A $C$-object is a Set-morphism $\sigma: A \to Z$ such that $a \sim a' \implies \sigma(a) \sim \sigma(a')$, and $C$-morphisms between $\sigma_1$ and $\sigma_2$ are Set-morphisms $f$ such that $\sigma_2 = f \sigma_1$. The final objects in this category are the Set-morphisms whose target are singleton sets.
 
 
 \end{document}

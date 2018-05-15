@@ -317,6 +317,22 @@ TBD
 
 \subsection*{5. Universal Properties}
 
+\subsubsection*{5.1}
+
+Let $Z$ be final in $C$. Consider $Z$ as an element of $C^{op}$ and let $Z'$ be any element of $C^{op}$. There is a unique $C$-morphism between $Z$ and $Z'$, hence there is a unique $C^{op}$-morphism between $Z'$ and $Z$.
+
+\subsubsection*{5.2}
+
+$0$ is inital since for all sets $S$ there is a unique function from $0$ to $S$, the empty function. Let $T \ne 0$ be a set. Then $T$ must have at least one element, say $t \in T$. Consider $Hom(T, P)$ where $P = \{a, b\}$ where $a = \{\}, b = \{a\}$ is a set with two elements. If $Hom(T, P)$ is nonempty, say $f \in Hom(T, P)$, then either $f(t) = a$ or $f(t) = b$; either way we can construct $f'$ which differs from $f$ in its value of $t$.
+
+\subsubsection*{5.3}
+
+TBD
+
+\subsubsection*{5.4}
+
+TBD
+
 \subsubsection*{5.5}
 
 We define the category $C$ explicitly. A $C$-object is a Set-morphism $\sigma: A \to Z$ such that $a \sim a' \implies \sigma(a) \sim \sigma(a')$, and $C$-morphisms between $\sigma_1$ and $\sigma_2$ are Set-morphisms $f$ such that $\sigma_2 = f \sigma_1$. The final objects in this category are the Set-morphisms whose target are singleton sets.

@@ -327,15 +327,29 @@ $0$ is inital since for all sets $S$ there is a unique function from $0$ to $S$,
 
 \subsubsection*{5.3}
 
-TBD
+Let $F$ be final. We show that there is a unique automorphism. This follows because $F$ is final and an automorphism is $F \to F$.
+
+Let $F_1, F_2$ be final. We show that there is a unique isomorphism between $F_1$ and $F_2$. Since $F_1$ is final there is a unique morphism $f : F_2 \to F_1$. It suffices to show that $f$ is an isomorphism. Since $F_2$ is final there is a unique morphism $g : F_1 \to F_2$. Then $gf = 1_{F_2}$ and $fg = 1_{F_1}$.
 
 \subsubsection*{5.4}
 
-TBD
+Let $(I, i)$ be an initial member of $Set^*$. Then there must be exactly one morphism from $(I, i)$ to any other object $(S, s)$. All singleton sets (that is, $(\{i\}, i)$) are initial, since given any $(S, s)$ the unique morphism maps $i$ to $s$. All non-singleton sets are not initial since there are at least two morphisms to $(S, s)$ for $|S| > 1$.
+
+Let $(F, f)$ be a final member of $Set^*$. Then there must be exactly one morphism from any other object $(S, s)$ to $(I, i)$. All singleton sets are final with the morphism mapping $s$ to $i$. All non-singleton sets are not final (same argument as above).
 
 \subsubsection*{5.5}
 
 We define the category $C$ explicitly. A $C$-object is a Set-morphism $\sigma: A \to Z$ such that $a \sim a' \implies \sigma(a) \sim \sigma(a')$, and $C$-morphisms between $\sigma_1$ and $\sigma_2$ are Set-morphisms $f$ such that $\sigma_2 = f \sigma_1$. The final objects in this category are the Set-morphisms whose target are singleton sets.
+
+\subsubsection*{5.6}
+
+Let $m, n$ be objects of this category and let $f$ be a final objects in $C_{m, n}$. Then $f | m$ and $f | n$. Furthermore, for all $f'$ such that $f' | m$ and $f' | n$ we must have $f' | f$. Hence $f$ is the gcd of $m$ and $n$.
+
+Let $f$ be an initial object in $C^{m, n}$. Then $m | f$ and $n | f$. Furthermore, for all $f'$ such that $m | f'$ and $n | f'$, we have $f | f'$. Hence $f$ is the lcm of $m$ and $n$.
+
+\subsubsection*
+
+The definition of $A \sqcup B$ given makes it a coproduct in $Set$.
 
 
 \end{document}

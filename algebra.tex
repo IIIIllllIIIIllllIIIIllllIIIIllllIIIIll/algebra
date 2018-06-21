@@ -7,6 +7,7 @@
 \usepackage{titlesec}
 \usepackage{tikz-cd}
 \usepackage[small,nohug,heads=littlevee]{diagrams}
+\usepackage{xfrac}
 \diagramstyle[labelstyle=\scriptstyle]
 
 \DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
@@ -347,9 +348,123 @@ Let $m, n$ be objects of this category and let $f$ be a final objects in $C_{m, 
 
 Let $f$ be an initial object in $C^{m, n}$. Then $m | f$ and $n | f$. Furthermore, for all $f'$ such that $m | f'$ and $n | f'$, we have $f | f'$. Hence $f$ is the lcm of $m$ and $n$.
 
-\subsubsection*
+\subsubsection*{5.7}
 
-The definition of $A \sqcup B$ given makes it a coproduct in $Set$.
+The definition of $A \sqcup B$ given makes it a coproduct in $Set$, since it satisfies the universal property of coproducts.
+
+\subsubsection*{5.8}
+
+We need to show that a final object of $C_{B, A}$ is final in $C_{A, B}$. Let $f$ be any final object in $C_{B, A}$, that is, $f$ consists of an element $B \times A$ of $C$ together with morphisms $\pi_A: B \times A \to A$ and $\pi_B: B \times A \to B$. Then $f$ is final in $C_{A, B}$. Proof: let $Z$ be any element of $C$ and $f_A, f_B$ be morphisms from $Z$ to $A$ and $B$ respectively. By finality of $f$ in $C_{B, A}$, there exists a unique morphism $\sigma$ such that the following diagram commutes.
+
+\begin{tikzcd}
+ &  &  & A \\
+Z \arrow[rrru, "f_A", bend left] \arrow[rrrd, "f_B", bend right] \arrow[rr, "\sigma" description] &  & B \times A \arrow[ru, "\pi_A"] \arrow[rd, "\pi_B"'] &  \\
+ &  &  & B
+\end{tikzcd}
+
+Hence $f$ is final in $C_{A, B}$.
+
+\subsubsection*{5.9}
+
+Let $A, B, C$ be sets. Then the product $A \times B \times C$ is universal with respect to following property: for any $Y$ and morphisms $f_A: Y \to A, f_B: Y \to B, f_C: Y \to C$ there is a unique morphism $\sigma: Y \to A \times B \times C$ such that the following diagram commutes.
+
+\begin{tikzcd}
+ &  &  & A \\
+Z \arrow[rrru, "f_A", bend left] \arrow[rrrd, "f_C"', bend right] \arrow[rr, "\sigma" description] \arrow[rrr, "f_B"', bend right] &  & A \times B \times C \arrow[ru, "\pi_A"] \arrow[rd, "\pi_C"'] \arrow[r, "\pi_C" description] & B \\
+ &  &  & C
+\end{tikzcd}
+
+In other words, $A \times B \times C$ is final in the category $C_{A, B, C}$. We now define this category. Objects in this category are diagrams
+
+\begin{tikzcd}
+ & A \\
+Z \arrow[ru, "f"] \arrow[r, "g" description] \arrow[rd, "h"'] & B \\
+ & C
+\end{tikzcd}
+
+in $C$, and morphisms
+
+\begin{tikzcd}
+ & A &  &  &  & A \\
+Z_1 \arrow[ru, "f_1"] \arrow[r, "g_1" description] \arrow[rd, "h_1"'] & B & \phantom{x} \arrow[r] & \phantom{x} & Z_2 \arrow[ru, "f_2"] \arrow[r, "g_2" description] \arrow[rd, "h_2"'] & B \\
+ & C &  &  &  & C
+\end{tikzcd}
+
+are commutative diagrams
+
+\begin{tikzcd}
+ &  & A \\
+Z_2 \arrow[rru, "f_2", bend left] \arrow[rr, "g_2"', bend right] \arrow[rrd, "h_2"', bend right] & Z_1 \arrow[ru, "f_1"] \arrow[r, "g_1" description] \arrow[rd, "h_1"'] & B \\
+ &  & C
+\end{tikzcd}
+
+We show that $(A \times B) \times C$ satisfies this universal property. The function $\sigma$ defined by $\sigma(z) = ((f_A(z), f_B(z)), f_C(z))$ makes the diagram commute.
+
+\subsubsection*{5.10}
+
+Let $C$ be a category and $S = \{A_i : i \in I\}$ be an indexed set of objects of $C$. Define the category $C_S$ as follows. An object in $C_S$ consists of an object $Z$ in $C$ together with indexed morphisms $\{f_i : i \in I\}$ where $f_i : Z \to A_i$. A morphism in $C_S$ between $(Z_1, \{f_i : i \in I\})$ and $(Z_2, \{g_i : i \in I\})$ is a morphism $\sigma: Z_1 \to Z_2$ in $C$ such that for all $i \in I$ the following diagram commutes.
+
+\begin{tikzcd}
+ &  & A_i \\
+Z_1 \arrow[r, "\sigma"] \arrow[rru, "f_i", bend left] & Z_2 \arrow[ru, "g_i"', bend left] &
+\end{tikzcd}
+
+(If $I$ is sufficiently small, we can convert this condition into the commutativeness of a big diagram.)
+
+\subsubsection*{5.11.1}
+
+The universal property says that for all $\phi, Z$ for which $(a_1, b_1) \sim (a_2, b_2) \implies \phi((a_1, b_1)) = \phi((a_2, b_2))$ there exists a unique $t$ such that the following diagram commutes
+
+\begin{tikzcd}
+\sfrac{A \times B}{\sim} \arrow[rr, "t"] &  & Z \\
+ & A \times B \arrow[ru, "\varphi"'] \arrow[lu, "\pi"] &
+\end{tikzcd}
+
+Let $Z = \sfrac{A}{\sim_A}$ and $\varphi$ be defined by
+
+\begin{tikzcd}
+A \times B \arrow[r, "\pi_A"'] \arrow[rr, "\varphi", bend left] & A \arrow[r, "\pi"'] & \sfrac{A}{\sim_A}
+\end{tikzcd}
+
+where $\pi$ is any representative-choice function $A \to \sfrac{A}{\sim_A}$ (such a function is included in the definition of $\sfrac{A}{\sim_A}$). By the above, there exists a set-function $\sfrac{A \times B}{\sim} \to \sfrac{A}{\sim_A}$.
+
+\subsubsection*{5.11.2}
+
+Lemma. The representative-choice function has an inverse. Proof: by using the universal property of quotients,
+
+\begin{tikzcd}
+A / \sim \arrow[rr, "\exists !"] &  & A \\
+ & A \arrow[ru, "id"'] \arrow[lu, "\pi"] &
+\end{tikzcd}
+
+Let the functions be labelled as such:
+
+\begin{tikzcd}
+ & \sfrac{A}{\sim_A} \\
+\sfrac{A \times B}{\sim} \arrow[ru, "\pi_a"] \arrow[rd, "\pi_b"'] &  \\
+ & \sfrac{B}{\sim_B}
+\end{tikzcd}
+
+Note that this is an element of $Set_{\sfrac{A}{\sim_A}, \sfrac{B}{\sim_B}}$. Let the following be another element.
+
+\begin{tikzcd}
+ & \frac{A}{\sim_A} \\
+Z \arrow[ru, "f_A"] \arrow[rd, "f_B"'] &  \\
+ & \frac{B}{\sim_B}
+\end{tikzcd}
+
+We wish to show that there is a unique $\sigma: Z \to A \times B / \sim$ such that the combined diagram commutes. Consider the following diagram.
+
+\begin{tikzcd}
+ &  & A/\sim_A \arrow[r, "\exists !"] & A \\
+Z \arrow[rru, "f_A", bend left] \arrow[rrd, "f_B"', bend right] \arrow[rr, dotted, bend left=49] & A\times B / \sim \arrow[ru] \arrow[rd] & A \times B \arrow[ru] \arrow[rd] \arrow[l, "\pi_\sim"] &  \\
+ &  & B/\sim_B \arrow[r, "\exists !"'] & B
+\end{tikzcd}
+
+By the universal property of $A \times B$, the dotted line is inhabited by a unique set-function. Its composition with $\pi_\sim$ provides the required $\sigma$.
+
+
+
 
 
 \end{document}

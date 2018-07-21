@@ -1,6 +1,7 @@
 \listfiles
 \documentclass{article}
 
+\usepackage{hyperref}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{mathtools}
@@ -30,6 +31,14 @@
 
 \begin{document}
 \maketitle
+
+\section*{Short Notes}
+
+\begin{tikzcd}
+ & A &  & A \arrow[rd] &  \\
+A \times B \arrow[ru] \arrow[rd] &  &  &  & A \sqcup B \\
+ & B &  & B \arrow[ru] &
+\end{tikzcd}
 
 \section*{I. Set Theory and Categories}
 
@@ -413,6 +422,8 @@ Z_1 \arrow[r, "\sigma"] \arrow[rru, "f_i", bend left] & Z_2 \arrow[ru, "g_i"', b
 
 \subsubsection*{5.11.1}
 
+check: \url{https://math.stackexchange.com/questions/242149/problem-1-5-11-in-aluffis-algebra-chapter-0}
+
 The universal property says that for all $\phi, Z$ for which $(a_1, b_1) \sim (a_2, b_2) \implies \phi((a_1, b_1)) = \phi((a_2, b_2))$ there exists a unique $t$ such that the following diagram commutes
 
 \begin{tikzcd}
@@ -463,8 +474,88 @@ Z \arrow[rru, "f_A", bend left] \arrow[rrd, "f_B"', bend right] \arrow[rr, dotte
 
 By the universal property of $A \times B$, the dotted line is inhabited by a unique set-function. Its composition with $\pi_\sim$ provides the required $\sigma$.
 
+\subsubsection*{5.12}
 
+tbd. ``pullback".
 
+\section*{2. Groups}
 
+\subsubsection*{1.4}
+
+It suffices to show that $ghg^{-1}h^{-1} = 1$ for all $g, h$. This is true because it is $(gh^{-1})^2$.
+
+\subsubsection*{1.6}
+
+Let $G$ be a group. We know $1 \in G$. Hence if $|G| = 1$ then $G = \{e\}$.
+
+If $|G| = 2$ then $G = \{1, x\}$. The multiplication table is
+
+\begin{tabular}{ c | c | c }
+    & 1 & x \\ \hline
+  1 & 1 & x \\ \hline
+  x & x &   \\
+\end{tabular}
+
+The last spot must be 1.
+
+If $|G| = 3$ then $G = \{1, x, y\}$. Suppose $x^2 = 1$. Then
+
+\begin{tabular}{ c | c | c | c }
+    & 1 & x & y \\ \hline
+  1 & 1 & x & y \\ \hline
+  x & x & 1 &   \\ \hline
+  y & y &   &   \\
+\end{tabular}
+
+No choice is possible for the value of $xy$. Hence $x^2 = y$.
+
+\begin{tabular}{ c | c | c | c }
+    & 1 & x & y \\ \hline
+  1 & 1 & x & y \\ \hline
+  x & x & y & 1 \\ \hline
+  y & y & 1 & x \\
+\end{tabular}
+
+Let $|G| = 4, G = \{1, x, y, z\}$. The table is
+
+\begin{tabular}{ c | c | c | c | c }
+    & 1 & x & y & z \\ \hline
+  1 & 1 & x & y & z \\ \hline
+  x & x &   &   &   \\ \hline
+  y & y &   &   &   \\ \hline
+  z & z &   &   &
+\end{tabular}
+
+Either $x^2 = 1, y$ or $z$. The later two cases are equivalent by relabeling. In the first case,
+
+\begin{tabular}{ c | c | c | c | c }
+    & 1 & x & y & z \\ \hline
+  1 & 1 & x & y & z \\ \hline
+  x & x & 1 & z & y \\ \hline
+  y & y & z &   &   \\ \hline
+  z & z & y &   &
+\end{tabular}
+
+Either the remaining diagonal entries are $1$ (giving us the table for $C_2 \times C_2$) or they are $x$ (giving us the table for $C_4$).
+
+In the other case,
+
+\begin{tabular}{ c | c | c | c | c }
+    & 1 & x & y & z \\ \hline
+  1 & 1 & x & y & z \\ \hline
+  x & x & y & z & 1 \\ \hline
+  y & y & z & 1 & x \\ \hline
+  z & z & 1 & x & y
+\end{tabular}
+
+which is the table for $C_4$.
+
+\subsubsection*{1.8}
+
+Every element pairs up with its inverse except $f$.
+
+\subsubsection*{1.9}
+
+The elements which are their own inverse are either 1 or have order 2. There are $n-m$ of these and the non-1 elements come in pairs. If $n$ is even, then $m$ is odd, hence nonzero.
 
 \end{document}

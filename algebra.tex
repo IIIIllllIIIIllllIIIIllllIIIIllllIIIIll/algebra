@@ -558,4 +558,54 @@ Every element pairs up with its inverse except $f$.
 
 The elements which are their own inverse are either 1 or have order 2. There are $n-m$ of these and the non-1 elements come in pairs. If $n$ is even, then $m$ is odd, hence nonzero.
 
+\subsubsection*{1.10}
+
+Let the order of $g$ be $2k + 1$. Then the distinct powers of $g$ are $1, g, g^2, \ldots g^{2k}$ with $g^{2k+1} = 1$. The distinct powers of $g^2$ are $1, g^2, g^4, \ldots g^{2k}, g^{2k+2} = g, g^3, \ldots, g^{2k-1}$. Hence the order of $g^2$ is the same as the order of $g$.
+
+\subsubsection*{1.11}
+
+We prove the hint. We know that the distinct powers of $g$ are $1, g, g^2, \ldots g^{k-1}$. It suffices to show that the powers of $aga^{-1}$ which are $1, aga^{-1}, ag^2a^{-1}, \ldots ag^{k-1}a^{-1}$ are distinct. These are distinct because otherwise, supposing $ag^{p}a^{-1} = ag^{q}a^{-1}$ for some $0 \le p, q \le k$, by cancellation, $g^p = g^q$, a contradiction.
+
+Then $|gh| = |g^{-1}ghg| = |hg|$.
+
+\subsubsection*{3.1}
+
+By the universal property of products applied to $H \times H$ there is a unique morphism $q$ (which we denote by $\varphi \times \varphi$) such that the following diagram commutes.
+
+\begin{tikzcd}
+ & G \arrow[rr, "\varphi"] &  & H \\
+G \times G \arrow[ru, "{\pi_{G, 1}}"] \arrow[rd, "{\pi_{G, 2}}"'] \arrow[rr, "q"] &  & H\times H \arrow[ru, "{\pi_{H, 1}}"] \arrow[rd, "{\pi_{H, 2}}"'] &  \\
+ & G \arrow[rr, "\varphi"'] &  & H
+\end{tikzcd}
+
+\subsubsection*{3.2}
+
+The following diagram commutes.
+
+\begin{tikzcd}
+ & G \arrow[rr, "\varphi"] &  & H \arrow[rr, "\psi"] &  & K \\
+G \times G \arrow[ru, "{\pi_{G, 1}}"] \arrow[rd, "{\pi_{G, 2}}"'] \arrow[rr, "\varphi \times \varphi"] &  & H\times H \arrow[ru, "{\pi_{H, 1}}"] \arrow[rd, "{\pi_{H, 2}}"'] \arrow[rr, "\psi \times \psi"] &  & K \times K \arrow[ru, "{\pi_{K, 1}}"] \arrow[rd, "{\pi_{K, 1}}"'] &  \\
+ & G \arrow[rr, "\varphi"'] &  & H \arrow[rr, "\psi"'] &  & K
+\end{tikzcd}
+
+By the universal property of products applied to $K \times K$ as well as the outer edges of the diagram (i.e. the morphisms $\psi \varphi \pi_{G, i}$), there is a  unique isomorphism denoted by $\psi\varphi \times \psi\varphi$ that makes the diagram commute. By its uniqueness, it must equal the composition $\psi \times \psi$ and $\varphi \times \varphi$
+
+\subsubsection*{3.3}
+
+Let $A, B, A \times B, Y$ be albelian groups, and let $f_A : A \to Y$ and $f_B: B \to Y$ be group homomorphisms. Define $f: A \times B \to Y$ by $f((g, h)) = f_A(g) f_B(h)$. It suffices to show that $f$ is the unique group homomorphism that makes the following diagram commute [diagram].
+
+Proof of homomorphism: TBD. (Note that this is no longer true in the category of groups).
+
+Commutativeness: for all $a \in A$ we have $f(i_A(a)) = f((a, 1)) = f_A(a)$. The proof that $f_B = i_B \circ f$ is similar.
+
+Uniqueness: suppose $f'$ is a group homomorphism that makes the diagram commute. TBD.
+
+\subsubsection*{3.4}
+
+$\Z^+ \times \Z[x]^+\simeq \Z[x]^+$ via the homomorphism $(n, p) \to n + px$.
+
+\subsubsection*{3.5}
+
+Suppose $\Q = G \times H$. Then there are two subgroups of $Q$, namely $i_G(G) = G \times \{0_H\}$ and $i_H(H)$, which intersect at $\{0\}$. However any two nontrivial subgroups of $\Q$ intersect at at least 2 points.
+
 \end{document}

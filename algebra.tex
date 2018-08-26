@@ -637,27 +637,30 @@ We know that there is a unique arrow $f$ such that the following commutes:
 \Z \arrow[rr, "s_3"'] \arrow[ru] &  & C_3 \arrow[ru, "i_3"] &
 \end{tikzcd}
 
-We show that $f$ is an epimorphism. Let $g_1, g_2$ be two morphisms from $C_2 * C_3$ to some group $C$, such that $g_1 \circ f = g_2 \circ f$.
+We show that $f$ is an epimorphism. Let $g_1, g_2$ be two morphisms from $C_2 * C_3$ to some group $C$, such that $g_1 \circ f = g_2 \circ f$. We wish to show that $g_1 = g_2$. We do this by exhibiting 5 diagrams; these are not commutative diagrams, but in each of them, the maximal paths (there are two) commute.
 
 \begin{tikzcd}
-\Z * \Z \arrow[r, "f"] & C_2 * C_3 \arrow[r, shift left, "g_1"] \arrow[r, shift right, "g_2"'] & C
+\Z * \Z \arrow[r] & C_2 \times C_3 \arrow[r, shift left] \arrow[r, shift right] & C
 \end{tikzcd}
-
-This means that $g_1 \circ i_2 \circ s_2 = g_2 \circ i_2 \circ s_2$. (TBD: because of somethnig about the maps $\Z \to \Z * \Z$...)
 
 \begin{tikzcd}
-\Z \arrow[r, "s_2"] & C_2 \arrow[rd, "i_2"] &  &  \\
- &  & C_2 * C_3 \arrow[r, shift left, "g_1"] \arrow[r, shift right, "g_2"'] & C
+\Z \arrow[rd] &  &  &  \\
+ & \Z * \Z \arrow[r] & C_2 \times C_3 \arrow[r, shift left] \arrow[r, shift right] & C
 \end{tikzcd}
-
-since $s_2$ is an epimorphism, $g_1 \circ i_2 = g_2 \circ i_2$.
 
 \begin{tikzcd}
-C_2 \arrow[rd, "i_2"] &  &  \\
- & C_2 * C_3 \arrow[r, shift left, "g_1"] \arrow[r, shift right, "g_2"'] & C
+\Z \arrow[r] & C_2 \arrow[rd] &  &  \\
+ &  & C_2 \times C_3 \arrow[r, shift left] \arrow[r, shift right] & C
 \end{tikzcd}
 
-A similar argument shows that $g_1 \circ i_3 = g_2 \circ i_3$. Hence the following diagram commutes.
+\begin{tikzcd}
+C_2 \arrow[rd] &  &  \\
+ & C_2 \times C_3 \arrow[r] \arrow[r] & C
+\end{tikzcd}
+
+in the last step we made use of the fact that $s_2$ is an epimorphism (since the injection is surjective).
+
+A similar argument shows that the following diagram commutes:
 
 \begin{tikzcd}
 C_2 \arrow[rrd, "g_1 \circ i_2 = g_2 \circ i_2", bend left] \arrow[rd] &  &  \\
